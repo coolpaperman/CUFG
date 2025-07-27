@@ -40,7 +40,7 @@ def new_ungrad(grad_remain, grad_forget, epoch):
         cosine_similarity = dot_product / (norm_gradr * norm_gradf)
         angle.append(cosine_similarity)
     
-    if any(cs > 0.85-(epoch//10)*0.05 for cs in angle):   # 0.5-(epoch//3)*0.155 # 0.8-(epoch//10)*0.34  0.63ziji 902 svhn 0.9-(epoch//10)*0.06
+    if any(cs > 0.45-(epoch//10)*0.05 for cs in angle):   
         Unlearn_grad = []
         for grad_r, grad_f in zip(grad_remain, grad_forget):
             grad_nr = grad_r/ (grad_r.norm() + 1e-8)
